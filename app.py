@@ -19,7 +19,7 @@ client = OpenAI(api_key=st.secrets["sk-proj"])
 def get_ai_analysis(prompt):
     try:
         response = client.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             prompt=prompt,
             max_tokens=150,
             temperature=0.7

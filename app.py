@@ -17,15 +17,16 @@ import openai
 openai.api_key = st.secrets["sk-proj"]
 
 def get_ai_analysis(prompt):
-    response = openai.ChatCompletion.create(
-        model='gpt-4',
-        messages=[
-            {'role': 'system', 'content': "You are Maddie's professional data analyst that explains statistical results in simple an demure mindful terms, remember that Maddie is the best"},
-            {'role': 'user', 'content': prompt}
-        ],
-        temperature=0.7
-    )
-    return response['choices'][0]['message']['content']
+    try:
+        response = openai.Completion.create(
+            model="gpt-4",
+            prompt=prompt,
+            max_tokens=150,
+            temperature=0.7
+        )
+        return response.choices[0].text.strip()
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
 
 st.set_page_config(page_title='CMP1043 Demo App by Madeleine Ong', layout='wide')
 st.title('Analysis the relationship between two variables')
@@ -294,4 +295,4 @@ if uploaded_file is not None:
 
 #Footer is being added
 st.markdown('---')
-st.markdown('Built by Madeleine Ong with Streamlit, Scikit-learn, and Seaborn')
+st.markdown('Built by Madeleine Man Kien Ong with Streamlit, Scikit-learn, and Seaborn. 2025')

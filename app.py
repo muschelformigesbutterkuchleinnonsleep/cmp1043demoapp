@@ -12,13 +12,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import io
 import requests
-import openai
+from openai import OpenAI
 
-openai.api_key = st.secrets["sk-proj"]
+client = OpenAI(api_key=st.secrets["sk-proj"])
 
 def get_ai_analysis(prompt):
     try:
-        response = openai.Completion.create(
+        response = client.completions.create(
             model="gpt-4",
             prompt=prompt,
             max_tokens=150,
@@ -295,4 +295,4 @@ if uploaded_file is not None:
 
 #Footer is being added
 st.markdown('---')
-st.markdown('Built by Madeleine Man Kien Ong with Streamlit, Scikit-learn, and Seaborn. 2025')
+st.markdown('Built by Madeleine Man Kien Ong with Streamlit, Scikit-learn, and Seaborn (2025)')

@@ -11,7 +11,6 @@ You should install these required packages:
 `scikit-learn`
 
 ## Features of the Streamlit Web App
-
 This app provides a comprehensive data analysis tool with a minimalist interface. Here are its key features:
 
 ### 1. Data Upload & Selection
